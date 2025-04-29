@@ -1,0 +1,11 @@
+.navbar .nav-link {
+    cursor: pointer !important;
+    font-weight: bold !important;
+    margin-left: 20px;
+    color: aliceblue;
+    font-size: medium;
+  }
+.navbar .nav-link:hover {
+    color: #e14a12 !important;
+  }
+  
