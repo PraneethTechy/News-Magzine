@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import NewsItem from "./NewsItem";
 
-const NewsBoard = ({category}) => {
+const NewsBoard = ({ category }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -9,7 +9,16 @@ const NewsBoard = ({category}) => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        setArticles(data.articles);
+        if (data.articles) {
+          setArticles(data.articles);
+        } else {
+          setArticles([]);
+          console.error("No articles found in response:", data);
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching news:", error);
+        setArticles([]);
       });
   }, [category]);
 
